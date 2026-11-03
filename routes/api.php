@@ -2,6 +2,7 @@
 
 use App\Presentation\Http\Controllers\Api\AppointmentController;
 use App\Presentation\Http\Controllers\Api\AuthController;
+use App\Presentation\Http\Controllers\Api\ConsultaController;
 use App\Presentation\Http\Controllers\Api\ExamCatalogController;
 use App\Presentation\Http\Controllers\Api\FollowUpController;
 use App\Presentation\Http\Controllers\Api\MedicalHistoryController;
@@ -38,4 +39,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('medical-history',  MedicalHistoryController::class);
     Route::apiResource('follow-ups',       FollowUpController::class);
     Route::apiResource('exam-catalog',     ExamCatalogController::class);
+
+    // ── Consultas ─────────────────────────────────────────────────────────────
+    Route::get('consultas',                                  [ConsultaController::class, 'index']);
+    Route::post('consultas',                                 [ConsultaController::class, 'store']);
+    Route::get('consultas/{id}',                             [ConsultaController::class, 'show']);
+    Route::put('consultas/{id}',                             [ConsultaController::class, 'update']);
+    Route::delete('consultas/{id}',                          [ConsultaController::class, 'destroy']);
+    Route::post('consultas/{id}/close',                      [ConsultaController::class, 'close']);
+    Route::post('consultas/{id}/reopen',                     [ConsultaController::class, 'reopen']);
+    Route::get('consultas/{id}/exams',                       [ConsultaController::class, 'indexExams']);
+    Route::post('consultas/{id}/exams',                      [ConsultaController::class, 'storeExam']);
+    Route::put('consultas/{id}/exams/{examId}',              [ConsultaController::class, 'updateExam']);
+    Route::delete('consultas/{id}/exams/{examId}',           [ConsultaController::class, 'destroyExam']);
+    Route::get('consultas/{id}/hospitalization',             [ConsultaController::class, 'showHospitalization']);
+    Route::post('consultas/{id}/hospitalization',            [ConsultaController::class, 'upsertHospitalization']);
+    Route::delete('consultas/{id}/hospitalization',          [ConsultaController::class, 'destroyHospitalization']);
 });
