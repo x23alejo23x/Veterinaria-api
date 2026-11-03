@@ -10,8 +10,10 @@ use App\Domain\MedicalHistory\Repositories\MedicalHistoryRepositoryInterface;
 use App\Domain\Medication\Repositories\MedicationRepositoryInterface;
 use App\Domain\Owner\Repositories\OwnerRepositoryInterface;
 use App\Domain\Patient\Repositories\PatientRepositoryInterface;
+use App\Domain\ExamCatalog\Repositories\ExamCatalogRepositoryInterface;
 use App\Domain\Prescription\Repositories\PrescriptionRepositoryInterface;
 use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentAppointmentRepository;
+use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentExamCatalogRepository;
 use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentFollowUpRepository;
 use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentMedicalHistoryRepository;
 use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentMedicationRepository;
@@ -31,5 +33,6 @@ final class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MedicalHistoryRepositoryInterface::class, EloquentMedicalHistoryRepository::class);
         $this->app->bind(FollowUpRepositoryInterface::class, EloquentFollowUpRepository::class);
         $this->app->bind(PrescriptionRepositoryInterface::class, EloquentPrescriptionRepository::class);
+        $this->app->bind(ExamCatalogRepositoryInterface::class, EloquentExamCatalogRepository::class);
     }
 }

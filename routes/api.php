@@ -2,6 +2,7 @@
 
 use App\Presentation\Http\Controllers\Api\AppointmentController;
 use App\Presentation\Http\Controllers\Api\AuthController;
+use App\Presentation\Http\Controllers\Api\ExamCatalogController;
 use App\Presentation\Http\Controllers\Api\FollowUpController;
 use App\Presentation\Http\Controllers\Api\MedicalHistoryController;
 use App\Presentation\Http\Controllers\Api\MedicationController;
@@ -36,4 +37,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('appointments',     AppointmentController::class);
     Route::apiResource('medical-history',  MedicalHistoryController::class);
     Route::apiResource('follow-ups',       FollowUpController::class);
+    Route::apiResource('exam-catalog',     ExamCatalogController::class);
 });
